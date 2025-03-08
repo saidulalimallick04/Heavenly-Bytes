@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block Title %}Profile{% endblock %}
+
+{% block CustomCSS %}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+{% endblock CustomCSS %}
+
+
+
+{% block MainDiv %}
+
+<div class="container text-center mt-5">
+    <h1>Profile</h1>
+    <p>I'm a valued customer of this platform</p>
+    
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-4 text-start">
+            <h4>DETAILS</h4>
+            <p><strong>Name:</strong> {{request.user.first_name}} {{request.user.last_name}}</p>
+            <p><strong>Location:</strong> {{request.user.location}}</p>
+            <class="my-3" hr>
+            <p><strong>Gender: </strong> {{request.user.gender}}</p>
+            <p><strong>DoB: </strong> {{request.user.date_of_birth}}</p>
+            
+            
+        </div>
+        
+        <div class="col-md-4 text-center">
+            <img src="https://images.unsplash.com/photo-1596370175676-bfc19ba489f8?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Profile Picture" class="profile-img">
+        </div>
+
+        <div class="col-md-4 text-end">
+            <h4>ABOUT ME</h4>
+            <p>{{ request.user.about_me}}</p>
+
+            <p><strong>Email: </strong> {{request.user.email}} 
+            {% if not request.user.is_verified %}
+            <form>
+                <button type='submit'>
+                    <a href='/verifyemail/'>(Verify)</a>
+                </button>
+            </form>
+            {% endif %}
+            </p>
+            <p><strong>Ph. Number: </strong> {{request.user.phone_number}}</p>
+        </div>
+    </div>
+    
+    <div class="mt-4">
+        <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="me-2"><i class="bi bi-twitter"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+    </div>
+</div>
+
+{% endblock MainDiv %}

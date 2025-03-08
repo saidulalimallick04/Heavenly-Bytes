@@ -17,15 +17,79 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+from .views import *
+from Home.views import *
+from Users.views import *
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     
     #--------------------------------------------------------------------------
-    path("",include("Home.urls"))
+        # Home ---->>
     
+    path("",homePage,name='Heavenly-Bytes'),
+    path("home/",homePage,name='Heavenly-Bytes'),
+    path("explore/",explorePage,name='Heavenly-Bytes-Explore'),
+    path("aboutus/",aboutUsPage,name='Heavenly-Bytes-AboutUs'),
+    path("contactus/",contactUsPage,name='Heavenly-Bytes-ContactUs'),
     
     
     #--------------------------------------------------------------------------
+        # Users ---->>
+    
+    path("createaccount/",createAccount,name="Create Account"),
+    path("login/",loginAccount,name="Login"),
+    path("logout/",logoutAccount,name="Logout"),
+    path("profile/",userProfile,name='Profile'),
+    path("dashboard/",userDashboard,name='Dashboard'),
+    path("verifyemail/",verifyEmail,name='Email-Verify'),
+    path("otpconformation/",otpConformation,name='Email-OTP'),
+    
+    
+    #--------------------------------------------------------------------------
+        # Orders ---->>
+    
+    path("order/",include("Orders.urls")),
+    
+    #--------------------------------------------------------------------------
+        # Blog ---->>
+    
+    path("blog/",include("Blog.urls")),
+    
+    #--------------------------------------------------------------------------
+        # Menus ---->>
+    
+    path("menus/",include("Menus.urls")),
+    
+    #--------------------------------------------------------------------------
+        # Inventory ---->>
+    
+    path("inventory/",include("Inventory.urls")),
+
+    #--------------------------------------------------------------------------
+        # Notifications ---->>
+    
+    path("notifications/",include("Notifications.urls")),
+    
+    #--------------------------------------------------------------------------
+        # Payments ---->>
+    
+    path("payments/",include("Payments.urls")),
+    
+    #--------------------------------------------------------------------------
+        # Reservations ---->>
+    
+    path("reservations/",include("Reservations.urls")),
+    
+    #--------------------------------------------------------------------------
+        # Reviews ---->>
+    
+    path("reviews/",include("Reviews.urls")),
+        
 ]
+
+
+
+
+handler404=custom_404

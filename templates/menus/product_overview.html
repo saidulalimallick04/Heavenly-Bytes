@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block Title %}Productname{% endblock %}
+
+
+{% block CustomCSS %}
+
+main {
+    background-color: #5f9ea0; /* Custom Background Color */
+    color: white;
+}
+.overview-section {
+    padding: 60px 0;
+}
+.overview-content h2 {
+    font-weight: bold;
+}
+.btn-learn {
+    background: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.info-box {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.info-box h3 {
+    color: #5f9ea0;
+    font-weight: bold;
+}
+
+{% endblock CustomCSS %}
+
+
+
+<!---------------------------------------------------------->
+
+{% block MainDiv %}
+
+<section class="overview-section text-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Side: Image -->
+            <div class="col-md-6">
+                <img src="https://images.unsplash.com/photo-1739268515254-631fda640a1c?q=80&w=2052&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid rounded-circle" alt="Product Image">
+            </div>
+            <!-- Right Side: Text -->
+            <div class="col-md-6 overview-content text-start">
+                <h2>About Product</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel risus commodo, lobortis mi non, aliquet libero.</p>
+                <a href="#" class="btn btn-learn">Add to Cart</a>
+            </div>
+        </div>
+
+        <!-- Three Info Boxes -->
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="info-box text-center">
+                    <h3>01</h3>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-box text-center">
+                    <h3>02</h3>
+                    <p>Exceptuer sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-box text-center">
+                    <h3>03</h3>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock MainDiv %}

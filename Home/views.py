@@ -1,11 +1,27 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+
+
 # Create your views here.
 
 
-def homepage(request):
-    
-    
+def homePage(request):
     
     
     return render(request, "home/index.html")
+
+
+def explorePage(request):
+    
+    
+    return render(request, "home/explore_page.html")
+
+
+def aboutUsPage(request):
+    
+    
+    return render(request, 'home/about_us_page.html')
+
+
+def contactUsPage(request):
+    
+    return render(request,"home/contact_us_page.html")

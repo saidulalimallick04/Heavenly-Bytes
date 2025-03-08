@@ -11,14 +11,14 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
+ 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-%*bnx%*rd3ge%i0^6*n4+(mbey-2d#-#2(d226h-fc46&xmf4h'
 
@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL='Users.CustomUser'
 
 # Application definition
 
@@ -43,19 +44,18 @@ EXTERNAL_APPS=[
     'Home',
     'Users',
     'Menus',
-    
-    
-    'Blog',
-    'Inventory',
-    'Notifications',
     'Orders',
     'Payments',
+    'Reviews',
+    'Blog',
+    'Notifications',
+    'Inventory',
     'Reports',
     'Reservations',
-    'Reviews'
+    
 ]
-INSTALLED_APPS += EXTERNAL_APPS
 
+INSTALLED_APPS += EXTERNAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,7 +72,7 @@ ROOT_URLCONF = 'HeavenlyRoot.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,"templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
