@@ -2,6 +2,8 @@ import random
 import smtplib
 from email.message import EmailMessage
 
+from django.conf import settings
+
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
@@ -128,10 +130,11 @@ def verifyEmail(request):
                 
                 server=smtplib.SMTP('smtp.gmail.com',587)
                 server.starttls()
+                print("You are here!!")
+                ourEmail=settings.EMAIL_HOST_USER
+                ourPass=settings.EMAIL_HOST_PASSWORD
                 
-                ourEmail='k91.sami91@gmail.com'
-                ourPass='svcx yean xfxm ifwt'
-                
+                print(ourEmail,ourPass)
                 server.login(ourEmail,ourPass)
                 
                 msg=EmailMessage()
@@ -142,20 +145,20 @@ def verifyEmail(request):
                 
                 msg['To']= request.user.email
                 
-                msg.set_content(f'''
+                msg.set_content(f"""\
                                 Dear {request.user.first_name},
 
-                                    Your One-Time Password (OTP) for verifying your account on Heavenly Bytes is:
+                                Your sign-in code for Heavenly Bytes is: 
 
-                                    {otp}
+                                🔢 {otp}
 
-                                    This OTP is valid for until you close page/Server Stop. Please do not share it with anyone for security reasons.
+                                This code is usable for Until you request for new code. Keep it private and do not share it.
 
-                                    If you didn't request this, please ignore this email or contact our support team.
+                                If this request was not made by you, simply ignore this email.
 
-                                    Thank you,
-                                    Heavenly Bytes Team
-                                ''')
+                                Best,  
+                                Heavenly Bytes Team
+                                """)
                 
                 server.send_message(msg)
                 

@@ -5,7 +5,7 @@ from .views import *
 
 urlpatterns = [
     path("",menuOverview,name='Heavenly Bytes-Menus'),
-    path("productname",productOverview, name="Product Name"),
-    path("allproducts",seeAllProducts, name="Category Name")
     
+    path("allproducts/<category_id>",seeAllProducts, name="Category Name"),
+    path("productname/<item_id>",productOverview, name="Product Name")
 ]

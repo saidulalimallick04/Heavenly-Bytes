@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block Title %}Catagory Name{% endblock Title %}
+{% block Title %}{{Category_Name}}{% endblock Title %}
 
 
 {% block CustomCSS %}
@@ -30,35 +30,26 @@
 
 {% block MainDiv %}
 
-<Center><div class="category-header mt-3 ms-3 ">Category1</div></Center>
+<Center><div class="category-header mt-3 ms-3 ">{{Category_Name}}</div></Center>
 
 <div class="container">
     <div class="category-container">
         
         <div class="row mt-3 mb-3">
             
-            <a class="col-md-3 mt-3 product-card shadow-sm text-decoration-none" href="/menus/productname">
-                <div>
-                    <div class="card">
-                    <img src="https://images.unsplash.com/vector-1740295846398-72ca6929e0a8?q=80&w=2150&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Product Image">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text">$10</p>
+            {% for item in Items %}
+                <a class="col-md-3 mt-3 product-card shadow-sm text-decoration-none" href="/menus/productname/{{item.id}}">
+                    <div>
+                        <div class="card">
+                        <img src="https://images.unsplash.com/vector-1740295846398-72ca6929e0a8?q=80&w=2150&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Product Image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.name}}</h5>
+                            <p class="card-text">Rs.{{item.price}}</p>
+                        </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
-            </a>
-            <a class="col-md-3 mt-3 product-card shadow-sm text-decoration-none" href="/menus/productname">
-                <div >
-                    <div class="card">
-                    <img src="https://images.unsplash.com/vector-1740295846398-72ca6929e0a8?q=80&w=2150&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Product Image">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p class="card-text">$10</p>
-                    </div>
-                    </div>
-                </div>
-            </a>
+                </a>
+            {% endfor %}
 
             
         </div>

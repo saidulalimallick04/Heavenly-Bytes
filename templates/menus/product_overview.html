@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block Title %}Productname{% endblock %}
+{% block Title %}{{item.name}}{% endblock %}
 
 
 {% block CustomCSS %}
 
 main {
-    background-color: #5f9ea0; /* Custom Background Color */
+    background-color:rgb(55, 105, 107); /* Custom Background Color */
     color: white;
 }
 .overview-section {
@@ -52,9 +52,15 @@ main {
             </div>
             <!-- Right Side: Text -->
             <div class="col-md-6 overview-content text-start">
-                <h2>About Product</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel risus commodo, lobortis mi non, aliquet libero.</p>
+                <h2>{{item.name}}</h2>
+                <p>{{item.descriptions}}</p>
+
+                {% if request.user.is_verified %}
                 <a href="#" class="btn btn-learn">Add to Cart</a>
+                {% else %}
+                <a href="/verifyemail/" class="btn btn-learn">Verify Your Account</a>
+                then you can Order!!
+                {% endif %}
             </div>
         </div>
 

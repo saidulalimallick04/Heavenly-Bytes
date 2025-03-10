@@ -2,8 +2,8 @@
   >> A cloud Based Virtual Resturaunt.
 
 # Tech Stack Used: 
-  >> Language: Python, HTML, CSS
-  >> Framework: Django 
+  >> Language: Python, HTML, CSS, Js<br>
+  >> Framework: Django <br>
   >> Database: PostgreSQL
   >> 
 
