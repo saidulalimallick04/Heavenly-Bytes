@@ -25,17 +25,19 @@ class OrderDetail(models.Model):
     user=models.ForeignKey(User,on_delete=models.SET_DEFAULT, default="UserDeleted")
     customer_email=models.CharField(max_length=25)
     
-    order_date=models.DateField( auto_now_add=True)
+    order_date=models.DateField(auto_now_add=True)
     status=models.CharField(max_length=20,default='Placed')
+    is_delivered=models.BooleanField(default=False)
     
-    item_list_order_id=ArrayField(models.IntegerField())
+    item_list_order_id=ArrayField(models.IntegerField(),blank=True,default=list)
     
     total_amount=models.DecimalField(max_digits=10, decimal_places=2,default=0)
     
     
 class Cart(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    item_list_item_id=ArrayField(models.IntegerField())
+    item_list_item_id=ArrayField(models.IntegerField(),blank=True,default=list)
+    
     
     
     

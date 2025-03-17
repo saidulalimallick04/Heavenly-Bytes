@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from Orders.models import Cart
 # Create your views here.
 
 def menuOverview(request):
@@ -42,6 +43,24 @@ def seeAllProducts(request, category_id):
 
 def productOverview(request,item_id):
     
+    if request.method=="POST":
+        data=request.POST
+        
+        # item_id= data.get("item_id")
+        Count=data.get('Count')
+        
+        already_contain=Cart.objects.filter(item_list__contain=[item_id])
+        user_contain=Cart.objects.filter(id=request.user.id)
+        
+        
+        if user_contain is None or already_contain is None:
+            
+            Cart.objects.create(user_id=request.user.id,item_list_item_id=[item_id])
+            
+        elif user_contain is not None  or already_contain is None:
+            
+            ux=Cart.objects.filter(id=request.user.id)
+        
     QUERYITEM= MenuItem.objects.get(id=item_id)
     
     context={
